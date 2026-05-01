@@ -11,26 +11,26 @@
 
 using namespace std;
 
-struct Class {
+struct Student {             // Changed struct from Class to Student 
 string name;
 int score;
 };
-
-void displayData(const Class students[], int count);
-int addEntry(Class students[], int count, int maxSize);
-void searchEntry(const Class students[], int count);
-void saveData(const Class students[], int count, string filename);
-int loadData(Class students[], int maxSize, string filename);
-void processScores(const Class students[], int count);
+  // Function prototypes 
+void displayData(const Student students[], int count);   
+int addEntry(Student students[], int count, int maxSize);
+void searchEntry(const Student students[], int count);
+void saveData(const Student students[], int count, string filename);
+int loadData(Student students[], int maxSize, string filename);
+void processScores(const Student students[], int count);
 
 int main() {
 
   const int MAX_SIZE = 100;
-  Class students[MAX_SIZE];
+  Student students[MAX_SIZE];
   string filename = "output.txt";
   int currentCount = loadData(students, MAX_SIZE, filename);
   int choice;
-
+// looped menu
   do {
       cout << "\n --- Daily Quiz Menu --- \n";
       cout << "1. View Data\n2. Add Entry\n3. Search Entry\n4. Save Data\n5. Exit\n";
@@ -62,7 +62,7 @@ int main() {
   return 0;
 }
 
-void displayData(const Class students [], int count) {
+void displayData(const Student students [], int count) {   // Function for menu option 1. View Data - Displays all current data entries 
   if (count == 0) {
     cout << "No data available.\n";
     return;
@@ -73,7 +73,7 @@ void displayData(const Class students [], int count) {
     }
 }
 
-int addEntry(Class students[], int count, int maxSize) {
+int addEntry(Student students[], int count, int maxSize) {  // Function for menu option 2. Add Entry - which allows user to enter new data
   if (count >= maxSize) {
     cout << "Error: List Full.\n";
     return count;
@@ -86,7 +86,7 @@ int addEntry(Class students[], int count, int maxSize) {
   return count + 1;
 }
 
-void searchEntry(const Class students[], int count) {
+void searchEntry(const Student students[], int count) {  // Function for menu option 3. Search Entry - which finds records by name
   string searchName;
   cout << "Please enter a name: ";
   cin.ignore();
@@ -100,7 +100,7 @@ void searchEntry(const Class students[], int count) {
   cout << "No record of student.\n";
 }
 
-void saveData(const Class students[], int count, string filename) {
+void saveData(const Student students[], int count, string filename) {  // Function for menu option 4. Save Data - which writes array back to output file using ostream
   ofstream outFile(filename);
   if (outFile.is_open()) {
       for (int i = 0; i < count; i++) {
@@ -113,7 +113,7 @@ void saveData(const Class students[], int count, string filename) {
   }
 }
 
-int loadData(Class students[], int maxSize, string filename) {
+int loadData(Student students[], int maxSize, string filename) {  // Function to load data from file when program starts
   ifstream inFile(filename);
   int count = 0;
   if (inFile.is_open()) {
@@ -127,8 +127,9 @@ int loadData(Class students[], int maxSize, string filename) {
   return count;
 }
 
-void processScores(const Class students[], int count) {
+void processScores(const Student students[], int count) {  // Function to process the data to find the lowest and highest quiz score
   if (count == 0) return;
+  
   int maxIdx = 0, minIdx = 0;
   for (int i = 0; i < count; i++) {
       if (students[i].score > students[maxIdx].score) 
