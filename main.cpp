@@ -21,7 +21,7 @@ int addEntry(Student students[], int count, int maxSize);
 void searchEntry(const Student students[], int count);
 void saveData(const Student students[], int count, string filename);
 int loadData(Student students[], int maxSize, string filename);
-void processScores(const Student students[], int count, int& maxIdx, int& minIdx);
+void processScores(const Student students[], int count);
 
 int main() {
 
@@ -40,7 +40,7 @@ int main() {
       switch (choice) {
         case 1:
               displayData(students, currentCount);
-              processScores(students, currentCount, int& maxIdx, int& minIdx);
+              processScores(students, currentCount);
               break;
         case 2:
               currentCount = addEntry(students, currentCount, MAX_SIZE);
@@ -127,17 +127,16 @@ int loadData(Student students[], int maxSize, string filename) {  // Function to
   return count;
 }
 
-void processScores(const Student students[], int count, int& maxIdx, int& minIdx) {  // Function to process the data to find the lowest and highest quiz score
-  maxIdx = 0;
-  minIdx = 0;
-  
+void processScores(const Student students[], int count) {  // Function to process the data to find the lowest and highest quiz score
+ if (count == 0) return;
+
+  int maxIdx = 0, minIdx = 0;
+
   for (int i = 1; i < count; i++) {
-    if (students[i].score > students[maxIdx].score) {
+    if (students[i].score > students[maxIdx].score) 
       maxIdx = i;
-      }
-    if (students[i].score < students[minIdx].score) {
+    if (students[i].score < students[minIdx].score)
       minIdx = i;
-    }
   }
     
   cout << "\n--- Daily Quiz Stats ---\n";
