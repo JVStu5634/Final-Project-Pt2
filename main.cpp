@@ -52,7 +52,7 @@ int main() {
               saveData(students, currentCount, filename);
               break;
         case 5:
-              cout << "Exit Program... Goodbye \n";
+              cout << "Exiting... See you tomorrow! \n";
               break;
       default:
           cout << "Invalid selection. Please try again. \n";
