@@ -21,7 +21,7 @@ int addEntry(Student students[], int count, int maxSize);
 void searchEntry(const Student students[], int count);
 void saveData(const Student students[], int count, string filename);
 int loadData(Student students[], int maxSize, string filename);
-void processScores(const Student students[], int count);
+void processScores(const Student students[], int count, int& maxIdx, int& minIdx);
 
 int main() {
 
@@ -127,16 +127,19 @@ int loadData(Student students[], int maxSize, string filename) {  // Function to
   return count;
 }
 
-void processScores(const Student students[], int count) {  // Function to process the data to find the lowest and highest quiz score
-  if (count == 0) return;
+void processScores(const Student students[], int count, int& maxIdx, int& minIdx) {  // Function to process the data to find the lowest and highest quiz score
+  maxIdx = 0;
+  minIdx = 0;
   
-  int maxIdx = 0, minIdx = 0;
-  for (int i = 0; i < count; i++) {
-      if (students[i].score > students[maxIdx].score) 
-        maxIdx = i;
-      if (students[i].score < students[minIdx].score)
-        minIdx = i;
+  for (int i = 1; i < count; i++) {
+    if (students[i].score > students[maxIdx].score {
+      maxIdx = i;
+      }
+    if (students[i].score < students[minIdx].score {
+      minIdx = i;
+    }
   }
+    
   cout << "\n--- Daily Quiz Stats ---\n";
   cout << "Todays Highest Quiz Score is: " << students[maxIdx].score << " (" << students[maxIdx].name << ")\n";
   cout << "Todays Lowest Quiz Score is: " << students[minIdx].score << " (" << students[minIdx].name << ")\n";
