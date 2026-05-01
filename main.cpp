@@ -40,7 +40,7 @@ int main() {
       switch (choice) {
         case 1:
               displayData(students, currentCount);
-              processScores(students, currentCount);
+              processScores(students, currentCount, int& maxIdx, int& minIdx);
               break;
         case 2:
               currentCount = addEntry(students, currentCount, MAX_SIZE);
@@ -132,10 +132,10 @@ void processScores(const Student students[], int count, int& maxIdx, int& minIdx
   minIdx = 0;
   
   for (int i = 1; i < count; i++) {
-    if (students[i].score > students[maxIdx].score {
+    if (students[i].score > students[maxIdx].score) {
       maxIdx = i;
       }
-    if (students[i].score < students[minIdx].score {
+    if (students[i].score < students[minIdx].score) {
       minIdx = i;
     }
   }
