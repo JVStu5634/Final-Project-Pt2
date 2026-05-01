@@ -73,6 +73,7 @@ void displayData(const Class students [], int count) {
     }
 }
 
+int addEntry(Class students[], int count, int maxSize) {
 
 
 
